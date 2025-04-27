@@ -30,17 +30,18 @@ steps:
   displayName: 'Install dependencies'
 
 - task: ArchiveFiles@2
+  displayName: 'Archives files'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
     archiveType: zip
-    archiveFile: '$(Build.ArifactStagingDirectory)/$(Build.BuildId)-$(python.version).zip'
+    archiveFile: '$(Build.ArifactStagingDirectory)/$(Build.Buildld)-$(python.version).zip'
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
   inputs:
-    PathtoPublish: '$(Build.ArifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: Container
 
